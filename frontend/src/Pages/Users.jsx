@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import HeaderTitle from '../Components/HeaderTitle';
 import { Button, Flex, Modal, Table, Tag } from 'antd';
 import useNotification from '../hooks/useNotification';
+import { API_URL } from '../config';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -130,7 +131,7 @@ export default function Users() {
   // Operations : ------------------------------------------
 
   const deleteItem = (id, restore) => {
-    fetch(`http://localhost:3000/api/users/${id}`, { method: 'DELETE' })
+    fetch(`${API_URL}/api/users/${id}`, { method: 'DELETE' })
       .then((res) => res.json())
       .then((res) => {
         let msg = 'The user was deleted successfully';
@@ -147,7 +148,7 @@ export default function Users() {
 
   const updateTable = () => {
     setPending(true);
-    fetch('http://localhost:3000/api/users')
+    fetch(`${API_URL}/api/users`)
       .then((res) => res.json())
       .then((res) => {
         setUsers(res);

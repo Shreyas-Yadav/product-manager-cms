@@ -3,6 +3,7 @@ import NewProductForm from '../Components/NewProductForm';
 import ProductsTable from '../Components/ProductsTable';
 import ErrorBox from '../Components/ErrorBox';
 import useNotification from '../hooks/useNotification';
+import { API_URL } from '../config';
 import HeaderTitle from '../Components/HeaderTitle';
 
 export default function Products() {
@@ -13,7 +14,7 @@ export default function Products() {
 
   const fetchData = () => {
     setPending(true);
-    fetch('http://localhost:3000/api/products/')
+    fetch(`${API_URL}/api/products/`)
       .then((res) => res.json())
       .then((res) => {
         res.map((p) => (p.key = p.id));

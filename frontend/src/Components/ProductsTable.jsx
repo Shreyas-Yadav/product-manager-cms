@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Flex, Space, Table, Tag, Image, Typography, Modal } from 'antd';
 import NewProductForm from './NewProductForm';
 import useNotification from '../hooks/useNotification';
+import { API_URL } from '../config';
 import HeaderTitle from './HeaderTitle';
 const Price = ({ price }) => {
   return (
@@ -151,7 +152,7 @@ const ProductsTable = ({ pending, data, updateTable }) => {
   const toast = useNotification();
 
   const deleteItem = (item) => {
-    fetch(`http://localhost:3000/api/products/${item.id}`, {
+    fetch(`${API_URL}/api/products/${item.id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -170,7 +171,7 @@ const ProductsTable = ({ pending, data, updateTable }) => {
   ) => {
     let newData = { title, price, count, img, popularity, sale, colors, description, slag };
 
-    fetch(`http://localhost:3000/api/products/${id}`, {
+    fetch(`${API_URL}/api/products/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',

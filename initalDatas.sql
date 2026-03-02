@@ -29,14 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` int(100) NOT NULL,
-  `firstname` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `lastname` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `username` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `task` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `img` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `token` varchar(100) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `firstname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `task` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `admins`
@@ -55,8 +55,8 @@ INSERT INTO `admins` (`id`, `firstname`, `lastname`, `username`, `password`, `ta
 
 CREATE TABLE `categories` (
   `id` int(100) NOT NULL,
-  `title` varchar(100) COLLATE utf8_persian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -75,15 +75,15 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 
 CREATE TABLE `comments` (
   `id` int(100) NOT NULL,
-  `body` text COLLATE utf8_persian_ci NOT NULL,
-  `date` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `hour` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `body` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hour` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `userID` int(100) NOT NULL,
   `productID` int(100) NOT NULL,
   `is-reply` int(10) NOT NULL,
   `reply-id` int(100) NOT NULL,
   `isAccept` int(2) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `comments`
@@ -102,13 +102,13 @@ INSERT INTO `comments` (`id`, `body`, `date`, `hour`, `userID`, `productID`, `is
 
 CREATE TABLE `offs` (
   `id` int(100) NOT NULL,
-  `code` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `code` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `percent` int(100) NOT NULL,
   `adminID` int(100) NOT NULL,
   `productID` int(100) NOT NULL,
-  `date` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `date` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isActive` int(10) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -120,8 +120,8 @@ CREATE TABLE `orders` (
   `id` int(100) NOT NULL,
   `productID` int(100) NOT NULL,
   `userID` int(100) NOT NULL,
-  `date` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `hour` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `date` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `hour` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` bigint(20) NOT NULL,
   `off` int(100) NOT NULL,
   `sale` bigint(20) NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `orders` (
   `count` bigint(20) NOT NULL,
   `sale_count` bigint(20) NOT NULL,
   `isActive` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -139,17 +139,17 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `products` (
   `id` int(100) NOT NULL,
-  `title` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(100) NOT NULL,
   `count` int(100) NOT NULL,
-  `img` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `popularity` int(100) NOT NULL,
   `sale` int(100) NOT NULL,
   `colors` int(100) NOT NULL,
-  `productDesc` text COLLATE utf8_persian_ci NOT NULL,
-  `url` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `productDesc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `categoryID` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `products`
@@ -172,17 +172,17 @@ INSERT INTO `products` (`id`, `title`, `price`, `count`, `img`, `popularity`, `s
 
 CREATE TABLE `users` (
   `id` int(100) NOT NULL,
-  `firsname` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `lastname` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `username` varchar(100) COLLATE utf8_persian_ci NOT NULL,
-  `password` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `firsname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` bigint(20) NOT NULL,
-  `city` varchar(50) COLLATE utf8_persian_ci NOT NULL,
-  `email` varchar(50) COLLATE utf8_persian_ci NOT NULL,
-  `address` text COLLATE utf8_persian_ci NOT NULL,
+  `city` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `score` int(100) NOT NULL,
   `buy` bigint(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`

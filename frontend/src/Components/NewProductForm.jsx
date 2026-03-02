@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Input, Row, Space } from 'antd';
 import { AccountBookTwoTone, DollarTwoTone, EditTwoTone, FileImageTwoTone } from '@ant-design/icons';
 import useNotification from '../hooks/useNotification';
+import { API_URL } from '../config';
 const layout = {
   labelCol: {
     span: 4,
@@ -44,7 +45,7 @@ const NewProductForm = ({
     };
 
     // add new product
-    fetch(`http://localhost:3000/api/products/`, {
+    fetch(`${API_URL}/api/products/`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

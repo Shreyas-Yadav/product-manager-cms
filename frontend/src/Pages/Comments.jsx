@@ -1,6 +1,7 @@
 import { Button, Flex, Form, Input, Modal, Table, Tag } from 'antd';
 import React, { useEffect, useState } from 'react';
 import useNotification from '../hooks/useNotification';
+import { API_URL } from '../config';
 import ErrorBox from '../Components/ErrorBox';
 import HeaderTitle from '../Components/HeaderTitle';
 
@@ -13,7 +14,7 @@ export default function Comments() {
 
   const updateTable = () => {
     setPending(true);
-    fetch('http://localhost:3000/api/comments')
+    fetch(`${API_URL}/api/comments`)
       .then((res) => res.json())
       .then((res) => {
         res.map((p) => (p.key = p.id));
@@ -193,7 +194,7 @@ export default function Comments() {
   // Operation --------------------------------------------------------------------
 
   const deleteItem = (data) => {
-    fetch(`http://localhost:3000/api/comments/${data.id}`, {
+    fetch(`${API_URL}/api/comments/${data.id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -212,7 +213,7 @@ export default function Comments() {
     let comment = form.getFieldValue('commentMsg');
     console.log(comment);
 
-    fetch(`http://localhost:3000/api/comments/${id}`, {
+    fetch(`${API_URL}/api/comments/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
@@ -229,7 +230,7 @@ export default function Comments() {
   };
 
   const toggleCommentVerification = (data) => {
-    let reqUrl = `http://localhost:3000/api/comments/${data.isAccept ? 'reject/' : 'accept/'}${data.id}`;
+    let reqUrl = `${API_URL}/api/comments/${data.isAccept ? 'reject/' : 'accept/'}${data.id}`;
     fetch(reqUrl, {
       method: 'POST',
     })
