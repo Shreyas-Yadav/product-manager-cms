@@ -20,4 +20,6 @@ app.use('/api/orders', ordersRouter)
 app.use('/api/offs', offsRouter)
 app.use('/api/admins', adminsRouter)
 
+app.get('/health', (_req, res) => res.json({ status: 'ok' }));
+
 app.listen(3000, () => console.log('Server Run On 3000 Port'));

@@ -1,0 +1,27 @@
+services:
+  backend:
+    image: ${ECR_REGISTRY}/product-manager-backend:latest
+    platform: linux/amd64
+    container_name: product-manager-backend
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: ${RDS_ENDPOINT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: product-manager-cms
+    restart: unless-stopped
+
+  frontend:
+    image: ${ECR_REGISTRY}/product-manager-frontend:latest
+    platform: linux/amd64
+    container_name: product-manager-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./frontend/nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - backend
+    restart: unless-stopped
