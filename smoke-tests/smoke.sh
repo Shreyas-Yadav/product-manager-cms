@@ -7,7 +7,7 @@ echo "Running smoke tests against: $BASE_URL"
 check() {
   local url="$BASE_URL$1"
   local status
-  status=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+  status=$(curl -s -o /dev/null -w "%{http_code}" "$url" 2>/dev/null) || status="000"
   if [ "$status" -eq 200 ]; then
     echo "  PASS: GET $url -> $status"
   else
